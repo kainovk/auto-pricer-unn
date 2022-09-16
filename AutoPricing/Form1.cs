@@ -67,8 +67,7 @@ namespace AutoPricing
             {
                 autos.Add(newAuto);
 
-                ListViewItem item = new ListViewItem("id");
-                item.SubItems.Add(comboBox_SelectAutoType.Text);
+                ListViewItem item = new ListViewItem(comboBox_SelectAutoType.Text);
                 item.SubItems.Add(textBox_Mark.Text);
                 item.SubItems.Add(textBox_ReleaseYear.Text);
                 item.SubItems.Add(textBox_InitialPrice.Text);
@@ -102,31 +101,18 @@ namespace AutoPricing
             {
                 if (listView1.Items.Count > 0)
                 {
-                    var selectedItem = listView1.SelectedItems[0];
-                    if (selectedItem != null)
+                    var selectedRowSubItems = listView1.SelectedItems[0].SubItems;
+                    Auto auto = parseAutoFromSubItems(selectedRowSubItems);
+                    if (auto != null)
                     {
-                        string type = selectedItem.SubItems[1].Text;
-                        string mark = selectedItem.SubItems[2].Text;
-                        int releaseYear = int.Parse(selectedItem.SubItems[3].Text);
-                        int price = int.Parse(selectedItem.SubItems[4].Text);
-
-                        Auto auto = null;
-                        if(type == "Легковой")
-                        {
-                            auto = new Car(mark, price, releaseYear);
-                        }
-                        else if (type == "Грузовой")
-                        {
-                            auto = new Truck(mark, price, releaseYear);
-                        }
-
                         autos.Remove(auto);
                     }
+
                     listView1.Items.Remove(listView1.SelectedItems[0]);
                 }
 
             }
-            catch(ArgumentException)
+            catch (ArgumentException)
             {
                 // ingore
             }
@@ -164,14 +150,44 @@ namespace AutoPricing
             try
             {
                 rowNumber = int.Parse(textBox_rowNumber.Text, System.Globalization.NumberStyles.AllowLeadingWhite | System.Globalization.NumberStyles.AllowTrailingWhite);
-
+                ListViewItem.ListViewSubItemCollection items = listView1.Items[rowNumber - 1].SubItems;
+                Auto auto = parseAutoFromSubItems(items);
+                if (auto != null)
+                {
+                    autos.Remove(auto);
+                }
 
                 listView1.Items.RemoveAt(rowNumber - 1);
-            } 
+            }
             catch (Exception)
             {
                 // ignore
             }
+        }
+
+        private Auto parseAutoFromSubItems(ListViewItem.ListViewSubItemCollection items)
+        {
+            Auto result = null;
+            try
+            {
+                string type = items[0].Text;
+                string mark = items[1].Text;
+                int releaseYear = int.Parse(items[2].Text);
+                int initialPrice = int.Parse(items[3].Text);
+                if (type == "Легковой")
+                {
+                    result = new Car(mark, releaseYear, initialPrice);
+                }
+                else if (type == "Грузовой")
+                {
+                    result = new Truck(mark, releaseYear, initialPrice);
+                }
+            }
+            catch (Exception)
+            {
+                // ignore
+            }
+            return result;
         }
     }
 }
