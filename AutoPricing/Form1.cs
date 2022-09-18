@@ -189,5 +189,19 @@ namespace AutoPricing
             }
             return result;
         }
+
+        private void button_copy_Click(object sender, EventArgs e)
+        {
+            if(listView1.FocusedItem != null)
+            {
+                int index = listView1.FocusedItem.Index;
+                var items = listView1.Items[index].SubItems;
+
+                comboBox_SelectAutoType.Text = items[0].Text;
+                textBox_Mark.Text = items[1].Text;
+                textBox_ReleaseYear.Text = items[2].Text;
+                textBox_InitialPrice.Text = items[3].Text;
+            }
+        }
     }
 }

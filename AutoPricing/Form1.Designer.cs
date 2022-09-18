@@ -36,6 +36,7 @@
             this.column_initialprice = new System.Windows.Forms.ColumnHeader();
             this.column_actualprice = new System.Windows.Forms.ColumnHeader();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button_copy = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox_rowNumber = new System.Windows.Forms.TextBox();
             this.button_removeByRowNumber = new System.Windows.Forms.Button();
@@ -105,6 +106,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button_copy);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.textBox_rowNumber);
             this.panel2.Controls.Add(this.button_removeByRowNumber);
@@ -122,6 +124,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(199, 426);
             this.panel2.TabIndex = 6;
+            // 
+            // button_copy
+            // 
+            this.button_copy.Location = new System.Drawing.Point(3, 292);
+            this.button_copy.Name = "button_copy";
+            this.button_copy.Size = new System.Drawing.Size(193, 32);
+            this.button_copy.TabIndex = 18;
+            this.button_copy.Text = "Копировать";
+            this.button_copy.UseVisualStyleBackColor = true;
+            this.button_copy.Click += new System.EventHandler(this.button_copy_Click);
             // 
             // label5
             // 
@@ -151,7 +163,7 @@
             // 
             // button_remove
             // 
-            this.button_remove.Location = new System.Drawing.Point(3, 278);
+            this.button_remove.Location = new System.Drawing.Point(3, 254);
             this.button_remove.Name = "button_remove";
             this.button_remove.Size = new System.Drawing.Size(193, 32);
             this.button_remove.TabIndex = 14;
@@ -171,7 +183,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 123);
+            this.label3.Location = new System.Drawing.Point(3, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 15);
             this.label3.TabIndex = 12;
@@ -180,7 +192,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 183);
+            this.label2.Location = new System.Drawing.Point(3, 169);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 15);
             this.label2.TabIndex = 11;
@@ -189,7 +201,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 62);
+            this.label1.Location = new System.Drawing.Point(3, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 15);
             this.label1.TabIndex = 10;
@@ -197,28 +209,28 @@
             // 
             // textBox_InitialPrice
             // 
-            this.textBox_InitialPrice.Location = new System.Drawing.Point(3, 201);
+            this.textBox_InitialPrice.Location = new System.Drawing.Point(3, 187);
             this.textBox_InitialPrice.Name = "textBox_InitialPrice";
             this.textBox_InitialPrice.Size = new System.Drawing.Size(128, 23);
             this.textBox_InitialPrice.TabIndex = 9;
             // 
             // textBox_ReleaseYear
             // 
-            this.textBox_ReleaseYear.Location = new System.Drawing.Point(3, 141);
+            this.textBox_ReleaseYear.Location = new System.Drawing.Point(3, 129);
             this.textBox_ReleaseYear.Name = "textBox_ReleaseYear";
             this.textBox_ReleaseYear.Size = new System.Drawing.Size(128, 23);
             this.textBox_ReleaseYear.TabIndex = 8;
             // 
             // textBox_Mark
             // 
-            this.textBox_Mark.Location = new System.Drawing.Point(3, 80);
+            this.textBox_Mark.Location = new System.Drawing.Point(3, 74);
             this.textBox_Mark.Name = "textBox_Mark";
             this.textBox_Mark.Size = new System.Drawing.Size(128, 23);
             this.textBox_Mark.TabIndex = 7;
             // 
             // button_Add
             // 
-            this.button_Add.Location = new System.Drawing.Point(3, 240);
+            this.button_Add.Location = new System.Drawing.Point(3, 216);
             this.button_Add.Name = "button_Add";
             this.button_Add.Size = new System.Drawing.Size(193, 32);
             this.button_Add.TabIndex = 6;
@@ -272,5 +284,6 @@
         private Label label5;
         private TextBox textBox_rowNumber;
         private Button button_removeByRowNumber;
+        private Button button_copy;
     }
 }
