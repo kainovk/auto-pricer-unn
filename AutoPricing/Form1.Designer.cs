@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.column_id = new System.Windows.Forms.ColumnHeader();
             this.column_autotype = new System.Windows.Forms.ColumnHeader();
             this.column_mark = new System.Windows.Forms.ColumnHeader();
             this.column_releaseyear = new System.Windows.Forms.ColumnHeader();
@@ -69,7 +70,8 @@
             this.column_mark,
             this.column_releaseyear,
             this.column_initialprice,
-            this.column_actualprice});
+            this.column_actualprice,
+            this.column_id});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(3, 3);
@@ -79,6 +81,10 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView1_ColumnClick);
+            // 
+            // column_id
+            // 
+            this.column_id.Text = "ID";
             // 
             // column_autotype
             // 
@@ -159,7 +165,7 @@
             this.button_removeByRowNumber.TabIndex = 15;
             this.button_removeByRowNumber.Text = "Удалить по номеру в списке";
             this.button_removeByRowNumber.UseVisualStyleBackColor = true;
-            this.button_removeByRowNumber.Click += new System.EventHandler(this.button_removeByRowNumber_Click);
+            this.button_removeByRowNumber.Click += new System.EventHandler(this.button_removeById_Click);
             // 
             // button_remove
             // 
@@ -285,5 +291,6 @@
         private TextBox textBox_rowNumber;
         private Button button_removeByRowNumber;
         private Button button_copy;
+        private ColumnHeader column_id;
     }
 }

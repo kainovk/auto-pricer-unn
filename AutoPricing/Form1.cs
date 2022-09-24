@@ -5,6 +5,7 @@ namespace AutoPricing
 {
     public partial class Form1 : Form
     {
+
         private ListViewColumnSorter lvwColumnSorter;
 
         private List<Auto> autos = new List<Auto>();
@@ -73,6 +74,7 @@ namespace AutoPricing
                 item.SubItems.Add(textBox_InitialPrice.Text);
                 int actualPrice = newAuto.GetPrice();
                 item.SubItems.Add(actualPrice.ToString());
+                item.SubItems.Add("" + (listView1.Items.Count+1));
                 listView1.Items.Add(item);
             }
 
@@ -80,6 +82,16 @@ namespace AutoPricing
             textBox_ReleaseYear.Clear();
             textBox_InitialPrice.Clear();
             textBox_Mark.Focus();
+
+            refreshIds();
+        }
+
+        private void refreshIds()
+        {
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                listView1.Items[i].SubItems[5].Text = "" + (i + 1);
+            }
         }
 
         private bool ValidateAuto(Auto newAuto)
@@ -116,6 +128,7 @@ namespace AutoPricing
             {
                 // ingore
             }
+            refreshIds();
         }
 
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -142,9 +155,10 @@ namespace AutoPricing
 
             // Perform the sort with these new sort options.
             this.listView1.Sort();
+            refreshIds();
         }
 
-        private void button_removeByRowNumber_Click(object sender, EventArgs e)
+        private void button_removeById_Click(object sender, EventArgs e)
         {
             int rowNumber;
             try
@@ -163,6 +177,7 @@ namespace AutoPricing
             {
                 // ignore
             }
+            refreshIds();
         }
 
         private Auto parseAutoFromSubItems(ListViewItem.ListViewSubItemCollection items)
